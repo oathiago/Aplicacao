@@ -8,11 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-public class AplicacaoApplication {
+public class Application {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(AplicacaoApplication.class, args);
+        SpringApplication.run(Application.class, args);
 
         UsuarioController aplicacaoController = new UsuarioController();
         EmpresaController empresaController= new EmpresaController();
@@ -22,7 +22,8 @@ public class AplicacaoApplication {
                 "codenation");
 
         empresaController.createEmpresa(1L, "Codenation", "21545465561548", 3);
-    }
+        empresaController.createEmpresa(2L, "Banco Inter", "21545465561548", 3);
+        empresaController.createEmpresa(2L, "Banco Inter", "54484845465455", 3);}
 
 
 }

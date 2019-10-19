@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
 @SpringBootTest
-class AplicacaoApplicationTests {
+class ApplicationTest {
 
 	AplicacaoService aplicacaoService = new AplicacaoService();
 
