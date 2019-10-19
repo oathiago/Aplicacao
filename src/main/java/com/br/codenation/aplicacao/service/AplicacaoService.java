@@ -12,15 +12,22 @@ public class AplicacaoService {
     List<Empresa> empresaList = new ArrayList<>();
 
     public Usuario createUsuario(Long id,
-                              String nome,
-                              String documento,
-                              int idade,
-                              String login,
-                              String senha) {
+                                 String nome,
+                                 String documento,
+                                 int idade,
+                                 String login,
+                                 String senha) {
 
         Usuario usuario = new Usuario(id, nome, documento, idade, login, senha);
         usuarioList.add(usuario);
         System.out.println("#### INCLUSAO DE USUARIO FEITA COM SUCESSO!");
         return usuario;
+    }
+
+    public void createEmpresa(Long id, String nome, String documento, int vagas) {
+
+        Empresa empresa = new Empresa(id, nome, documento, vagas);
+        empresaList.add(empresa);
+        System.out.println("#### INCLUSAO DE EMPRESA FEITA COM SUCESSO!");
     }
 }

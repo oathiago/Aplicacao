@@ -1,8 +1,10 @@
 package com.br.codenation.aplicacao.controller;
 
 import com.br.codenation.aplicacao.service.AplicacaoService;
+import org.springframework.web.bind.annotation.RestController;
 
-public class AplicacaoController {
+@RestController
+public class UsuarioController {
 
     AplicacaoService aplicacaoService = new AplicacaoService();
 
