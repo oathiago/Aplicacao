@@ -13,9 +13,10 @@ public class UsuarioController {
                               String documento,
                               int idade,
                               String login,
-                              String senha) {
+                              String senha,
+                              Long idEmpresa) {
 
-        aplicacaoService.createUsuario(id, nome, documento, idade, login, senha);
+        aplicacaoService.createUsuario(id, nome, documento, idade, login, senha, idEmpresa);
 
     }
 }

@@ -2,45 +2,69 @@ package com.br.codenation.aplicacao.service;
 
 import com.br.codenation.aplicacao.entity.Empresa;
 import com.br.codenation.aplicacao.entity.Usuario;
-import lombok.extern.java.Log;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.br.codenation.aplicacao.exception.CodenationException;
+import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class AplicacaoService {
-
-    Logger LOG = LoggerFactory.getLogger(BaseService.class);
-
-    List<Usuario> usuarioList = new ArrayList<>();
-    List<Empresa> empresaList = new ArrayList<>();
+public class AplicacaoService extends BaseService {
 
     public Usuario createUsuario(Long id,
                                  String nome,
                                  String documento,
                                  int idade,
                                  String login,
-                                 String senha) {
+                                 String senha,
+                                 Long idEmpresa) {
 
-        Usuario usuario = new Usuario(id, nome, documento, idade, login, senha);
-        usuarioList.add(usuario);
-        LOG.info("#### INCLUSAO DE USUARIO {} FEITA COM SUCESSO!", usuario.getNome());
-        return usuario;
+        if (StringUtils.isEmpty(nome) || StringUtils.isEmpty(documento) || StringUtils.isEmpty(login)
+                || StringUtils.isEmpty(senha)) {
+            LOG.error("#### ERROR - PREENCHA OS CAMPOS OBRIGATÓRIOS!");
+        } else {
+
+            if (usuarioList.stream().anyMatch(usuario -> usuario.getNome().equals(nome)
+                    || usuario.getLogin().equals(login)
+                    || usuario.getDocumento().equals(documento))) {
+                LOG.error("#### ERROR - USUÁRIO {} JÁ CADASTRADO ANTERIORMENTE!", nome);
+            } else {
+
+                Empresa empresa = findEmpresaById(idEmpresa);
+                if (empresa == null) {
+                    LOG.error("#### ERROR - EMPRESA NÃO ENCONTRADA!");
+                } else {
+                    Usuario usuario = new Usuario(id, nome, documento, idade, login, senha, empresa);
+                    usuarioList.add(usuario);
+                    LOG.info("#### INCLUSÃO DE USUÁRIO {}, DOCUMENTO {}, IDADE {} FEITA COM SUCESSO!", usuario.getNome(), usuario.getDocumento(), usuario.getIdade());
+                    adicionarUsuarioEmpresa(empresa, usuario);
+                    return usuario;
+                }
+            }
+        }
+        return null;
+
     }
 
-    public void createEmpresa(Long id, String nome, String documento, int vagas) {
+    public Empresa createEmpresa(Long id, String nome, String documento, int vagas) {
 
         if (empresaList.stream().filter(empresa -> empresa.getDocumento().equals(documento)).findFirst().isPresent()) {
-            LOG.error("#### ERROR - JA EXISTE UMA EMPRESA COM ESTE DOCUMENTO!");
-        } else if (empresaList.stream().filter(empresa -> empresa.getNome().equals(nome)).findFirst().isPresent()){
-            LOG.error("#### ERROR - JA EXISTE UMA EMPRESA COM ESTE NOME!");
-        } else {
-            Empresa empresa = new Empresa(id, nome, documento, vagas);
-            empresaList.add(empresa);
-            LOG.info("#### INCLUSAO DE EMPRESA {} FEITA COM SUCESSO!", empresa.getNome());
+            throw new CodenationException("#### ERROR - JÁ EXISTE UMA EMPRESA COM ESTE DOCUMENTO!");
+        } else if (empresaList.stream().filter(empresa -> empresa.getNome().equals(nome)).findFirst().isPresent()) {
+            throw new CodenationException("#### ERROR - JÁ EXISTE UMA EMPRESA COM ESTE NOME!");
         }
+        Empresa empresa = new Empresa(id, nome, documento, vagas);
+        empresaList.add(empresa);
+        LOG.info("#### INCLUSÃO DE EMPRESA {} FEITA COM SUCESSO!", empresa.getNome());
+        return empresa;
 
+    }
 
+    public Empresa findEmpresaById(Long idEmpresa) {
+        return empresaList.stream().filter(empresa -> empresa.getId().equals(idEmpresa)).findFirst().orElse(null);
+    }
+
+    public void adicionarUsuarioEmpresa(Empresa empresa, Usuario usuario) {
+        for (Empresa company : empresaList) {
+            if (company.getId().equals(empresa.getId())) {
+                company.getUsuarioList().add(usuario);
+            }
+        }
     }
 }
