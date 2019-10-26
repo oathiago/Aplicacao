@@ -24,7 +24,6 @@ class ApplicationTest {
     private ApplicationServiceImpl aplicacaoService = new ApplicationServiceImpl();
 
     @Test
-    @Ignore
     void testCreateUser() {
         User usuario = createUser();
         assert (usuario != null);
@@ -77,10 +76,6 @@ class ApplicationTest {
                         case 2:
                             LOG.info(declaredField.getAnnotation(Column.class).text() +
                                     user.getCompany().getName());
-                            break;
-                        case 3:
-                            LOG.info(declaredField.getAnnotation(Column.class).text() +
-                                    user.getSalary().setScale(2, RoundingMode.HALF_UP));
                             break;
                     }
                 }

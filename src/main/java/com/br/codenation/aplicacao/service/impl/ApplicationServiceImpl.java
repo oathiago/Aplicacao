@@ -50,18 +50,6 @@ public class ApplicationServiceImpl extends BaseService implements ApplicationSe
         }
     }
 
-    @Override
-    public Company createCompany(String name, String coeument, int vacancies) {
-
-        validateCompany(name, coeument);
-        Long id = (long) (empresaList.size() + 1);
-        Company empresa = new Company(id, name, coeument, vacancies);
-        empresaList.add(empresa);
-        LOG.info("#### INCLUSÃO DE EMPRESA {} FEITA COM SUCESSO!", empresa.getName());
-        return empresa;
-
-    }
-
     private void validateCompany(String name, String document) {
         if (empresaList.stream().anyMatch(company -> company.getDocument().equals(document))) {
             throw new CodenationException("#### ERROR - JÁ EXISTE UMA EMPRESA COM ESTE DOCUMENTO!");
@@ -71,15 +59,27 @@ public class ApplicationServiceImpl extends BaseService implements ApplicationSe
     }
 
     @Override
-    public Company findCompanyById(Long idEmpresa) {
-        return empresaList.stream().filter(empresa -> empresa.getId().equals(idEmpresa)).findFirst().orElse(null);
+    public Company createCompany(String name, String document, int vacancies) {
+
+        validateCompany(name, document);
+        Long id = (long) (empresaList.size() + 1);
+        Company empresa = new Company(id, name, document, vacancies);
+        empresaList.add(empresa);
+        LOG.info("#### INCLUSÃO DE EMPRESA {} FEITA COM SUCESSO!", empresa.getName());
+        return empresa;
+
     }
 
     @Override
-    public void addUserInCompany(Company empresa, User usuario) {
+    public Company findCompanyById(Long idCompany) {
+        return empresaList.stream().filter(company -> company.getId().equals(idCompany)).findFirst().orElse(null);
+    }
+
+    @Override
+    public void addUserInCompany(Company newCompany, User user) {
         for (Company company : empresaList) {
-            if (company.getId().equals(empresa.getId())) {
-                company.getUserList().add(usuario);
+            if (company.getId().equals(newCompany.getId())) {
+                company.getUserList().add(user);
             }
         }
     }

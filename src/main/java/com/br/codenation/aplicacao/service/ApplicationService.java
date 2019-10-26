@@ -8,14 +8,14 @@ import java.math.BigDecimal;
 
 public interface ApplicationService {
 
-    User createUser(String nome, String documento, int idade,
-                    String login, String senha, Long idEmpresa,
+    User createUser(String name, String document, int age,
+                    String login, String password, Long idCompany,
                     BigDecimal salary);
 
-    Company createCompany(String nome, String documento, int vagas);
+    Company createCompany(String name, String document, int vacancies);
 
 
-    Company findCompanyById(Long idEmpresa);
+    Company findCompanyById(Long idCompany);
 
-    void addUserInCompany(Company empresa, User usuario);
+    void addUserInCompany(Company company, User user);
 }

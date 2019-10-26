@@ -28,10 +28,12 @@ public class FileServiceImpl extends BaseService implements FileService {
             String linha;
             while ((linha = in.readLine()) != null) {
                 String[] arrayLinha = linha.split(";");
-                if (file.contains("empresa")) {
-                    populateAndCallCreateCompany(arrayLinha);
-                } else if (file.contains("usuarios")) {
-                    populateAndCallCreateUser(arrayLinha);
+                if (!arrayLinha[0].contains("nome")) {
+                    if (file.contains("empresa")) {
+                        populateAndCallCreateCompany(arrayLinha);
+                    } else if (file.contains("usuarios")) {
+                        populateAndCallCreateUser(arrayLinha);
+                    }
                 }
             }
             in.close();
