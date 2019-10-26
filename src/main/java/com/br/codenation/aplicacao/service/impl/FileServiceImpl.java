@@ -46,7 +46,8 @@ public class FileServiceImpl extends BaseService implements FileService {
         String nome = arrayLinha[0];
         String documento = arrayLinha[1];
         int vagas = Integer.parseInt(arrayLinha[2]);
-        applicationService.createCompany(nome, documento, vagas);
+        String site = arrayLinha[3];
+        applicationService.createCompany(nome, documento, vagas, site);
     }
 
     private void populateAndCallCreateUser(String[] arrayLinha) {

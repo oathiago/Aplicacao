@@ -11,13 +11,15 @@ import java.util.List;
 public class Company extends Person {
 
     private int vacancies;
-    List<User> userList;
+    private List<User> userList;
+    private String site;
 
-    public Company(Long id, String name, String document, int vacancies) {
+    public Company(Long id, String name, String document, int vacancies, String site) {
         this.setId(id);
         this.setName(name);
         this.setDocument(document);
         this.vacancies = vacancies;
         userList = new ArrayList<>();
+        this.site = site;
     }
 }

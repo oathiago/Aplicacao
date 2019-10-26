@@ -7,8 +7,8 @@ public class CompanyController {
     private ApplicationServiceImpl applicationService = new ApplicationServiceImpl();
 
     public void createCompany(String name, String document,
-                              int vacancies) {
-        applicationService.createCompany(name, document, vacancies);
+                              int vacancies, String site) {
+        applicationService.createCompany(name, document, vacancies, site);
     }
 
 }

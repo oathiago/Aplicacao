@@ -3,7 +3,6 @@ package com.br.codenation.aplicacao.service.impl;
 import com.br.codenation.aplicacao.domain.entity.Company;
 import com.br.codenation.aplicacao.domain.entity.User;
 import com.br.codenation.aplicacao.exception.CodenationException;
-import com.br.codenation.aplicacao.service.ApplicationService;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
@@ -59,11 +58,11 @@ public class ApplicationServiceImpl extends BaseService implements ApplicationSe
     }
 
     @Override
-    public Company createCompany(String name, String document, int vacancies) {
+    public Company createCompany(String name, String document, int vacancies, String site) {
 
         validateCompany(name, document);
         Long id = (long) (empresaList.size() + 1);
-        Company empresa = new Company(id, name, document, vacancies);
+        Company empresa = new Company(id, name, document, vacancies, site);
         empresaList.add(empresa);
         LOG.info("#### INCLUSÃO DE EMPRESA {} FEITA COM SUCESSO!", empresa.getName());
         return empresa;

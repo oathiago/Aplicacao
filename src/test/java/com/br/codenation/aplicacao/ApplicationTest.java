@@ -13,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,28 +20,33 @@ import java.util.List;
 class ApplicationTest {
 
     private Logger LOG = LoggerFactory.getLogger(ApplicationTest.class);
-    private ApplicationServiceImpl aplicacaoService = new ApplicationServiceImpl();
+    private ApplicationServiceImpl applicationService = new ApplicationServiceImpl();
 
     @Test
+    @Ignore
     void testCreateUser() {
-        User usuario = createUser();
+        User usuario = createUser("Teste Thiago", "testeThiago");
         assert (usuario != null);
         assert (usuario.getName().equals("Teste Thiago"));
     }
 
-    private User createUser() {
-        Company empresa = aplicacaoService.createCompany("Empresa Teste", "15494851515156", 1);
-        return aplicacaoService.createUser("Teste Thiago", "123456987",
-                20, "testeThiago", "123456", empresa.getId(),
-                new BigDecimal(4324.03543));
+    private User createUser(String name, String login) {
+        Company company = applicationService.findCompanyById(1L);
+        if (company == null) {
+            company = applicationService.createCompany("Empresa Teste", "15494851515156",
+                    1, "www.google.com");
+        }
+        return applicationService.createUser(name, "1243256987",
+                20, login, "123454326", company.getId(),
+                new BigDecimal(1324.03543));
     }
 
     @Test
     @Ignore
     void validateDuplicateCompany() {
         try {
-            aplicacaoService.createCompany("Empresa Teste2", "1543421515156", 1);
-            aplicacaoService.createCompany("Empresa Teste2", "1543421515156", 1);
+            applicationService.createCompany("Empresa Teste2", "1543421515156", 1, "www.google.com");
+            applicationService.createCompany("Empresa Teste2", "1543421515156", 1, "www.google.com");
         } catch (Exception e) {
             assert (e.getClass().getName().contains("Codenation"));
         }
@@ -64,7 +68,7 @@ class ApplicationTest {
         }
 
         List<User> users = new ArrayList<>();
-        users.add(createUser());
+        users.add(createUser("Teste Usuario", "testeUsuario"));
         users.forEach(user -> {
             for (Field declaredField : user.getClass().getDeclaredFields()) {
                 if (declaredField.getAnnotation(Column.class) != null) {

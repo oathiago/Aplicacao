@@ -1,4 +1,4 @@
-package com.br.codenation.aplicacao.service;
+package com.br.codenation.aplicacao.service.impl;
 
 
 import com.br.codenation.aplicacao.domain.entity.Company;
@@ -12,7 +12,7 @@ public interface ApplicationService {
                     String login, String password, Long idCompany,
                     BigDecimal salary);
 
-    Company createCompany(String name, String document, int vacancies);
+    Company createCompany(String name, String document, int vacancies, String site);
 
 
     Company findCompanyById(Long idCompany);
