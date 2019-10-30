@@ -33,3 +33,9 @@ create table user
 		foreign key (company_id) references connected.company (id)
 );
 
+-- changeset thiago.oliveira:1.2 dbms:mysql
+alter table company drop column salary;
+alter table company drop column age;
+
+
+
