@@ -1,6 +1,6 @@
-package com.br.codenation.aplicacao.controller;
+package com.br.codenation.application.controller;
 
-import com.br.codenation.aplicacao.service.FileService;
+import com.br.codenation.application.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;

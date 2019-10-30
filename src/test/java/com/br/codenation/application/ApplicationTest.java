@@ -1,9 +1,9 @@
-package com.br.codenation.aplicacao;
+package com.br.codenation.application;
 
-import com.br.codenation.aplicacao.annotation.Column;
-import com.br.codenation.aplicacao.domain.entity.Company;
-import com.br.codenation.aplicacao.domain.entity.User;
-import com.br.codenation.aplicacao.service.impl.ApplicationServiceImpl;
+import com.br.codenation.application.annotation.Column;
+import com.br.codenation.application.domain.entity.Company;
+import com.br.codenation.application.domain.entity.User;
+import com.br.codenation.application.service.impl.ApplicationServiceImpl;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;

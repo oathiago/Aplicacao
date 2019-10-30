@@ -1,8 +1,8 @@
-package com.br.codenation.aplicacao.service.impl;
+package com.br.codenation.application.service.impl;
 
 
-import com.br.codenation.aplicacao.domain.entity.Company;
-import com.br.codenation.aplicacao.domain.entity.User;
+import com.br.codenation.application.domain.entity.Company;
+import com.br.codenation.application.domain.entity.User;
 
 import java.math.BigDecimal;
 

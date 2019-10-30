@@ -1,4 +1,4 @@
-package com.br.codenation.aplicacao.annotation;
+package com.br.codenation.application.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

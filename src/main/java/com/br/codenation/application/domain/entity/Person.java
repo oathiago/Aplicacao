@@ -1,10 +1,8 @@
-package com.br.codenation.aplicacao.domain.entity;
+package com.br.codenation.application.domain.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 class Person {
 
     private Long id;

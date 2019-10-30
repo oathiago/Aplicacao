@@ -1,7 +1,6 @@
-package com.br.codenation.aplicacao.controller;
+package com.br.codenation.application.controller;
 
-import com.br.codenation.aplicacao.service.impl.ApplicationService;
-import com.br.codenation.aplicacao.service.impl.ApplicationServiceImpl;
+import com.br.codenation.application.service.impl.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 

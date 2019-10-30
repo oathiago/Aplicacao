@@ -1,13 +1,13 @@
-package com.br.codenation.aplicacao.domain.entity;
+package com.br.codenation.application.domain.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Company extends Person {
 
     private int vacancies;

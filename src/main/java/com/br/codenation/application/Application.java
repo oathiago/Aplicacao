@@ -1,4 +1,4 @@
-package com.br.codenation.aplicacao;
+package com.br.codenation.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

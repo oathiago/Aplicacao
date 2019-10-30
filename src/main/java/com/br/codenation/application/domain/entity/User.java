@@ -1,13 +1,11 @@
-package com.br.codenation.aplicacao.domain.entity;
+package com.br.codenation.application.domain.entity;
 
-import com.br.codenation.aplicacao.annotation.Column;
-import lombok.Getter;
-import lombok.Setter;
+import com.br.codenation.application.annotation.Column;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
-@Getter
-@Setter
+@Data
 public class User extends Person {
 
     @Column(position = 1, text = "My login is ")

@@ -1,6 +1,6 @@
-package com.br.codenation.aplicacao.controller;
+package com.br.codenation.application.controller;
 
-import com.br.codenation.aplicacao.service.impl.ApplicationServiceImpl;
+import com.br.codenation.application.service.impl.ApplicationServiceImpl;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;

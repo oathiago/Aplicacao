@@ -1,4 +1,4 @@
-package com.br.codenation.aplicacao;
+package com.br.codenation.application;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

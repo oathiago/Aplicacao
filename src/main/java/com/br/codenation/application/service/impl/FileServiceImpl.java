@@ -1,7 +1,7 @@
-package com.br.codenation.aplicacao.service.impl;
+package com.br.codenation.application.service.impl;
 
-import com.br.codenation.aplicacao.exception.CodenationException;
-import com.br.codenation.aplicacao.service.FileService;
+import com.br.codenation.application.exception.CodenationException;
+import com.br.codenation.application.service.FileService;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;

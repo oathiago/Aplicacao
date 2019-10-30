@@ -1,10 +1,9 @@
-package com.br.codenation.aplicacao.service.impl;
+package com.br.codenation.application.service.impl;
 
-import com.br.codenation.aplicacao.domain.entity.Company;
-import com.br.codenation.aplicacao.domain.entity.User;
+import com.br.codenation.application.domain.entity.Company;
+import com.br.codenation.application.domain.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
