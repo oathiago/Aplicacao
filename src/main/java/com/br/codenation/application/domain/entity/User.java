@@ -1,7 +1,6 @@
 package com.br.codenation.application.domain.entity;
 
 import com.br.codenation.application.annotation.ColumnAnnotation;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

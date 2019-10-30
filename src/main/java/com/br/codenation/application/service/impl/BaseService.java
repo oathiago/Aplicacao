@@ -1,6 +1,5 @@
 package com.br.codenation.application.service.impl;
 
-import com.br.codenation.application.domain.entity.Company;
 import com.br.codenation.application.domain.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

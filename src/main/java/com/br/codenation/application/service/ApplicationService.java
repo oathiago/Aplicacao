@@ -1,11 +1,6 @@
 package com.br.codenation.application.service;
 
 
-import com.br.codenation.application.domain.entity.Company;
-import com.br.codenation.application.domain.entity.User;
-
-import java.math.BigDecimal;
-
 public interface ApplicationService {
 
 //    User createUser(String name, String document, int age,

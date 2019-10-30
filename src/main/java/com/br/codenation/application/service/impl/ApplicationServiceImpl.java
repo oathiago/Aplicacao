@@ -1,13 +1,7 @@
 package com.br.codenation.application.service.impl;
 
-import com.br.codenation.application.domain.entity.Company;
-import com.br.codenation.application.domain.entity.User;
-import com.br.codenation.application.exception.CodenationException;
 import com.br.codenation.application.service.ApplicationService;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-
-import java.math.BigDecimal;
 
 @Service
 public class ApplicationServiceImpl extends BaseService implements ApplicationService {

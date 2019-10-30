@@ -6,6 +6,8 @@ import com.br.codenation.application.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CompanyServiceImpl extends BaseService implements CompanyService {
 
@@ -24,5 +26,9 @@ public class CompanyServiceImpl extends BaseService implements CompanyService {
         company = companyDAO.save(company);
         LOG.info("#### INCLUSÃO DE EMPRESA {} FEITA COM SUCESSO!", company.getName());
         return company;
+    }
+
+    public List<Company> findAllByIdOrNameContainsOrDocument(Long id, String name, String document) {
+        return companyDAO.findAllByIdOrNameContainsOrDocument(id, name, document);
     }
 }
