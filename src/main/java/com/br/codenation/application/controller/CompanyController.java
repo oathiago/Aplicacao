@@ -18,9 +18,8 @@ public class CompanyController {
 
     @PutMapping("/create")
     public ResponseEntity createCompany(@RequestBody CompanyVO companyVO) {
-        companyService.createCompany(companyVO.getName(), companyVO.getDocument(),
-                companyVO.getVacancies(), companyVO.getSite());
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(companyService.createCompany(companyVO.getName(), companyVO.getDocument(),
+                companyVO.getVacancies(), companyVO.getSite()));
     }
 
 }

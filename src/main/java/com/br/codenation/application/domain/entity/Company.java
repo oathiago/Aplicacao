@@ -24,9 +24,6 @@ public class Company {
     @Column(name = "document")
     private String document;
 
-    @Column(name = "age")
-    private int age;
-
     @Column(name = "vacancies")
     private int vacancies;
 
