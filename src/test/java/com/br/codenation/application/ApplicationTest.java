@@ -1,6 +1,6 @@
 package com.br.codenation.application;
 
-import com.br.codenation.application.annotation.Column;
+import com.br.codenation.application.annotation.ColumnAnnotation;
 import com.br.codenation.application.domain.entity.Company;
 import com.br.codenation.application.domain.entity.User;
 import com.br.codenation.application.service.impl.ApplicationServiceImpl;
@@ -57,7 +57,7 @@ class ApplicationTest {
 
         Class<User> myClassUser = User.class;
         for (Field declaredField : myClassUser.getDeclaredFields()) {
-            if (declaredField.isAnnotationPresent(Column.class)) {
+            if (declaredField.isAnnotationPresent(ColumnAnnotation.class)) {
                 LOG.info(declaredField.getName());
             }
         }
@@ -71,14 +71,14 @@ class ApplicationTest {
         users.add(createUser("Teste Usuario", "testeUsuario"));
         users.forEach(user -> {
             for (Field declaredField : user.getClass().getDeclaredFields()) {
-                if (declaredField.getAnnotation(Column.class) != null) {
-                    switch (declaredField.getAnnotation(Column.class).position()) {
+                if (declaredField.getAnnotation(ColumnAnnotation.class) != null) {
+                    switch (declaredField.getAnnotation(ColumnAnnotation.class).position()) {
                         case 1:
-                            LOG.info(declaredField.getAnnotation(Column.class).text() +
+                            LOG.info(declaredField.getAnnotation(ColumnAnnotation.class).text() +
                                     user.getLogin());
                             break;
                         case 2:
-                            LOG.info(declaredField.getAnnotation(Column.class).text() +
+                            LOG.info(declaredField.getAnnotation(ColumnAnnotation.class).text() +
                                     user.getCompany().getName());
                             break;
                     }

@@ -17,6 +17,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<maven.liquibase.plugin.version>3.5.1</maven.liquibase.plugin.version>
 	</properties>
 
 	<dependencies>
@@ -65,6 +66,11 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+		</dependency>
+
 
 	</dependencies>
 
@@ -73,6 +79,26 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>${maven.liquibase.plugin.version}</version>
+				<configuration>
+					<changeLogFile>src/main/resources/db/changelog/db.changelog-master.xml</changeLogFile>
+					<databaseChangeLogTableName>database_changelog</databaseChangeLogTableName>
+					<databaseChangeLogLockTableName>database_changelog_lock</databaseChangeLogLockTableName>
+					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+					<verbose>true</verbose>
+					<driver>com.mysql.jdbc.Driver</driver>
+					<url>
+						jdbc:mysql://localhost:3306/application?useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false
+					</url>
+					<username>root</username>
+					<password>TAO*25#12@tao</password>
+					<rollbackCount>1</rollbackCount>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
