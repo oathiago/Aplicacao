@@ -50,7 +50,7 @@ public class FileServiceImpl extends BaseService implements FileService {
         String documento = arrayLinha[1];
         int vagas = Integer.parseInt(arrayLinha[2]);
         String site = arrayLinha[3];
-        applicationService.createCompany(nome, documento, vagas, site);
+//        applicationService.createCompany(nome, documento, vagas, site);
     }
 
     private void populateAndCallCreateUser(String[] arrayLinha) {
@@ -61,7 +61,7 @@ public class FileServiceImpl extends BaseService implements FileService {
         String senha = arrayLinha[4];
         Long idEmpresa = Long.parseLong(arrayLinha[5]);
         BigDecimal salary = new BigDecimal(arrayLinha[6]);
-        applicationService.createUser(nome, documento, idade,
-                login, senha, idEmpresa, salary);
+//        applicationService.createUser(nome, documento, idade,
+//                login, senha, idEmpresa, salary);
     }
 }

@@ -17,5 +17,4 @@ class BaseService {
     Logger LOG = LoggerFactory.getLogger(BaseService.class);
 
     static List<User> userList = new ArrayList<>();
-    static List<Company> empresaList = new ArrayList<>();
 }

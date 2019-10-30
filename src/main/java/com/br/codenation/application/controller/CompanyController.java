@@ -1,7 +1,7 @@
 package com.br.codenation.application.controller;
 
 import com.br.codenation.application.domain.vo.CompanyVO;
-import com.br.codenation.application.service.impl.ApplicationService;
+import com.br.codenation.application.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class CompanyController {
 
     @Autowired
-    private ApplicationService applicationService;
+    private CompanyService companyService;
 
     @PutMapping("/create")
     public ResponseEntity createCompany(@RequestBody CompanyVO companyVO) {
-        applicationService.createCompany(companyVO.getName(), companyVO.getDocument(),
+        companyService.createCompany(companyVO.getName(), companyVO.getDocument(),
                 companyVO.getVacancies(), companyVO.getSite());
         return ResponseEntity.ok().build();
     }

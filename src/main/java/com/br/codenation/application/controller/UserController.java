@@ -18,7 +18,7 @@ public class UserController {
                            Long idCompany,
                            BigDecimal salary) {
 
-        applicationService.createUser(name, document, age, login, password, idCompany, salary);
+//        applicationService.createUser(name, document, age, login, password, idCompany, salary);
 
     }
 }
