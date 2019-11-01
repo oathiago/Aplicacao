@@ -61,15 +61,27 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
-			<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.4.7.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.4.8.Final</version>
+		</dependency>
+
 
 
 	</dependencies>
@@ -93,10 +105,10 @@
 					<verbose>true</verbose>
 					<driver>com.mysql.jdbc.Driver</driver>
 					<url>
-						jdbc:mysql://localhost:3306/application?useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false
+						jdbc:mysql://localhost:3306/application
 					</url>
 					<username>root</username>
-					<password>TAO*25#12@tao</password>
+					<password>admin</password>
 					<rollbackCount>1</rollbackCount>
 				</configuration>
 			</plugin>

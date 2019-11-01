@@ -3,6 +3,8 @@ package com.br.codenation.application.domain.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +20,8 @@ public class Company {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 255)
+    @NotNull
     private String name;
 
     @Column(name = "document")
@@ -32,13 +35,4 @@ public class Company {
 
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<User> userList;
-
-    public Company(Long id, String name, String document, int vacancies, String site) {
-        this.setId(id);
-        this.setName(name);
-        this.setDocument(document);
-        this.vacancies = vacancies;
-        userList = new ArrayList<>();
-        this.site = site;
-    }
 }
