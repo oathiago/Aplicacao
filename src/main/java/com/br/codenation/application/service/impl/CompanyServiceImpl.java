@@ -5,6 +5,7 @@ import com.br.codenation.application.domain.entity.Company;
 import com.br.codenation.application.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class CompanyServiceImpl extends BaseService implements CompanyService {
     private CompanyDAO companyDAO;
 
     @Override
+    @Transactional
     public Company createCompany(String name, String document, int vacancies, String site) {
 
         Company company = Company.builder()
@@ -29,6 +31,6 @@ public class CompanyServiceImpl extends BaseService implements CompanyService {
     }
 
     public List<Company> findAllByIdOrNameContainsOrDocument(Long id, String name, String document) {
-        return companyDAO.findAllByIdOrNameContainsOrDocument(id, name, document);
+        return null;
     }
 }
