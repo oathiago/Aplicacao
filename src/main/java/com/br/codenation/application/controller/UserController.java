@@ -1,11 +1,9 @@
 package com.br.codenation.application.controller;
 
 import com.br.codenation.application.service.impl.ApplicationServiceImpl;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 
-@RestController
 public class UserController {
 
     private ApplicationServiceImpl applicationService = new ApplicationServiceImpl();

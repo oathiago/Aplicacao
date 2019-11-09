@@ -14,6 +14,22 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Builder
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(
+                name = "count_by_name",
+                procedureName = "company.count_by_name",
+                parameters = {
+                        @StoredProcedureParameter(
+                                mode = ParameterMode.IN,
+                                name = "name",
+                                type = String.class),
+                        @StoredProcedureParameter(
+                                mode = ParameterMode.OUT,
+                                name = "count",
+                                type = Long.class)
+                }
+        )
+})
 public class Company {
 
     @Id
@@ -36,4 +52,7 @@ public class Company {
 
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<User> userList;
+
+    @Transient
+    private String time;
 }

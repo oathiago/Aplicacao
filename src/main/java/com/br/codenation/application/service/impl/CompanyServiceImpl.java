@@ -7,13 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 public class CompanyServiceImpl extends BaseService implements CompanyService {
 
     @Autowired
-    private CompanyDAO companyDAO;
+    CompanyDAO companyDAO;
 
     @Override
     @Transactional
@@ -25,12 +23,12 @@ public class CompanyServiceImpl extends BaseService implements CompanyService {
                 .vacancies(vacancies)
                 .site(site)
                 .build();
-        company = companyDAO.save(company);
-        LOG.info("#### INCLUSÃO DE EMPRESA {} FEITA COM SUCESSO!", company.getName());
-        return company;
+
+        return companyDAO.save(company);
     }
 
-    public List<Company> findAllByIdOrNameContainsOrDocument(Long id, String name, String document) {
-        return null;
+    @Override
+    public void deleteCompany(Company company) {
+
     }
 }
