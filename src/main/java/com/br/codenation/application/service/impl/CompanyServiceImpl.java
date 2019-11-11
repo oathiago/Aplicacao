@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class CompanyServiceImpl extends BaseService implements CompanyService {
+public class CompanyServiceImpl implements CompanyService {
 
     @Autowired
-    CompanyDAO companyDAO;
+    private CompanyDAO companyDAO;
 
     @Override
     @Transactional
@@ -25,6 +25,7 @@ public class CompanyServiceImpl extends BaseService implements CompanyService {
                 .build();
 
         return companyDAO.save(company);
+
     }
 
     @Override
