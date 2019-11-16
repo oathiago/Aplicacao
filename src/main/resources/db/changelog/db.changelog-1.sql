@@ -2,7 +2,7 @@
 
 -- changeset thiago.oliveira:1.0 dbms:mysql
 
-create table company
+create table application.company
 (
 	id bigint auto_increment,
 	name varchar(100) not null,
@@ -17,7 +17,7 @@ create table company
 
 -- changeset thiago.oliveira:1.1 dbms:mysql
 
-create table user
+create table application.user
 (
 	id bigint auto_increment,
 	name varchar(100) not null,
@@ -30,7 +30,7 @@ create table user
 	constraint user_pk
 		primary key (id),
     constraint user_company_id_fk
-		foreign key (company_id) references connected.company (id)
+		foreign key (company_id) references application.company (id)
 );
 
 -- changeset thiago.oliveira:1.2 dbms:mysql

@@ -108,7 +108,7 @@
 						jdbc:mysql://localhost:3306/application?serverTimezone=UTC
 					</url>
 					<username>root</username>
-					<password>TAO*25#12@tao</password>
+					<password>admin</password>
 					<rollbackCount>1</rollbackCount>
 				</configuration>
 			</plugin>
