@@ -4,6 +4,7 @@ import com.br.codenation.application.domain.dao.CompanyDAO;
 import com.br.codenation.application.domain.entity.Company;
 import com.br.codenation.application.domain.vo.CompanyVO;
 import com.br.codenation.application.service.CompanyService;
+import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,21 +20,16 @@ public class CompanyServiceImpl implements CompanyService {
     @Autowired
     private CompanyDAO companyDAO;
 
+    ModelMapper modelMapper = new ModelMapper();
+
     Logger LOG = LoggerFactory.getLogger(BaseService.class);
 
     @Override
     @Transactional
-    public Company createCompany(CompanyVO companyVO) {
+    public CompanyVO createCompany(CompanyVO companyVO) {
 
-        Company company = Company.builder()
-                .name(companyVO.getName())
-                .document(companyVO.getDocument())
-                .vacancies(companyVO.getVacancies())
-                .site(companyVO.getSite())
-                .build();
-
-        return companyDAO.save(company);
-
+        Company company = companyDAO.save(modelMapper.map(companyVO, Company.class));
+        return modelMapper.map(company, CompanyVO.class);
     }
 
     @Override
@@ -44,17 +40,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public List<CompanyVO> findAllCompanies() {
         LOG.info("#### FIND ALL COMPANIES ####");
-        List<Company> companyList = companyDAO.findAll();
-        List<CompanyVO> companyVOList = companyList.stream().map(company -> {
-            return CompanyVO.builder()
-                    .id(company.getId())
-                    .name(company.getName())
-                    .document(company.getDocument())
-                    .vacancies(company.getVacancies())
-                    .site(company.getSite())
-                    .build();
-        }).collect(Collectors.toList());
-        return companyVOList;
+        return modelMapper.map(companyDAO.findAll(), List.class);
     }
 
     @Override
