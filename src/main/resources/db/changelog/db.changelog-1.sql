@@ -81,3 +81,11 @@ values ('Thiago Oliveira', '073.167.186-41', 'oathiago', '12345678', 31);
 -- changeset thiago.oliveira:1.8 dbms:mysql
 insert into user_role (user_id, role_id)
 values ((select max(id) from user), (select min(id) from role));
+
+-- changeset thiago.oliveira:1.9 dbms:mysql
+insert into user (name, document, username, password, age)
+values ('Saori Kido', '123.456.789-00', 'saori', '12345678', 1);
+
+-- changeset thiago.oliveira:1.10 dbms:mysql
+insert into user_role (user_id, role_id)
+values ((select max(id) from user), (select max(id) from role));
