@@ -4,6 +4,7 @@ import com.br.codenation.application.domain.dao.CompanyDAO;
 import com.br.codenation.application.domain.entity.Company;
 import com.br.codenation.application.domain.vo.CompanyVO;
 import com.br.codenation.application.service.CompanyService;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,14 +16,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class CompanyServiceImpl implements CompanyService {
 
     @Autowired
     private CompanyDAO companyDAO;
 
     ModelMapper modelMapper = new ModelMapper();
-
-    Logger LOG = LoggerFactory.getLogger(BaseService.class);
 
     @Override
     @Transactional
@@ -39,7 +39,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public List<CompanyVO> findAllCompanies() {
-        LOG.info("#### FIND ALL COMPANIES ####");
+        log.info("#### FIND ALL COMPANIES ####");
         return modelMapper.map(companyDAO.findAll(), List.class);
     }
 
