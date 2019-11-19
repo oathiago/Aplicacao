@@ -1,6 +1,8 @@
 package com.br.codenation.application.domain.entity;
 
 import com.br.codenation.application.annotation.ColumnAnnotation;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +13,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
+@Builder
+@AllArgsConstructor
 public class User {
 
     @Id
@@ -28,8 +32,8 @@ public class User {
     private int age;
 
     @ColumnAnnotation(position = 1, text = "My login is ")
-    @Column(name = "login")
-    private String login;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -43,4 +47,20 @@ public class User {
     @Column(name = "salary")
     private BigDecimal salary;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="user_role",
+            joinColumns=@JoinColumn(name="user_id"),
+            inverseJoinColumns=@JoinColumn(name="role_id")
+    )
+    private List<Role> roles;
+
+    public User (User user) {
+        super();
+        this.name = user.getName();
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.age = user.getAge();
+        this.document = user.getDocument();
+        this.roles = user.getRoles();
+    }
 }
