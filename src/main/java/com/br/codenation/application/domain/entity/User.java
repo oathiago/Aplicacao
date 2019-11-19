@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -41,18 +42,5 @@ public class User {
     @ColumnAnnotation(position = 3, text = "My salary is ")
     @Column(name = "salary")
     private BigDecimal salary;
-
-    public User(Long id, String name, String document,
-                int age, String login, String password, Company company,
-                BigDecimal salary) {
-        this.setId(id);
-        this.setName(name);
-        this.setDocument(document);
-        this.setAge(age);
-        this.login = login;
-        this.password = password;
-        this.company = company;
-        this.salary = salary;
-    }
 
 }
