@@ -28,8 +28,8 @@ public class User {
     private int age;
 
     @ColumnAnnotation(position = 1, text = "My login is ")
-    @Column(name = "login")
-    private String login;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "password")
     private String password;
