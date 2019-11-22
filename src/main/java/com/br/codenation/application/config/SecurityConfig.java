@@ -38,8 +38,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return NoOpPasswordEncoder.getInstance();
     }
 
-    @Override
-    public void configure(WebSecurity web) {
-        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
-    }
 }
