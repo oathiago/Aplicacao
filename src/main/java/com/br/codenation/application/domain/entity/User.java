@@ -1,6 +1,7 @@
 package com.br.codenation.application.domain.entity;
 
 import com.br.codenation.application.annotation.ColumnAnnotation;
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
+@ApiModel(description = "All details about the User. ")
 public class User {
 
     @Id

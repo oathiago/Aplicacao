@@ -1,5 +1,6 @@
 package com.br.codenation.application.domain.entity;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,6 +31,7 @@ import java.util.List;
                 }
         )
 })
+@ApiModel(description = "All details about the Company. ")
 public class Company {
 
     @Id
